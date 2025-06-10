@@ -9,7 +9,7 @@
 - Responsive UI
 
 ## Login Crdentails 
-userID: justin@yopmail.com
+userId: justin@yopmail.com
 Password: Test@123
 ---
 
