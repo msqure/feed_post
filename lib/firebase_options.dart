@@ -58,11 +58,11 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAjsgb-3BxkYXCNvU1nhKvvpf6ku2GVUp8',
+    apiKey: 'AIzaSyB69aXiPrGDaycsMHOVVjFLy9lc65yr6s0',
     appId: '1:828893151107:android:44c47086ade098e1f500b6',
     messagingSenderId: '369050145917',
-    projectId: 'feedapp-7f7af',
+    projectId: 'softify-pdf-camscan',
     storageBucket: 'feedapp-7f7af.firebasestorage.app',
-    // iosBundleId: '',
+    iosBundleId: 'com.softify.pdfcamscan',
   );
 }

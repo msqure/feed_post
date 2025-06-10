@@ -8,7 +8,7 @@ import '../../../blocs/auth/auth_bloc.dart';
 class LoginHelperWidgets {
 
 
-  // Text controllers
+
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passController = TextEditingController();
 

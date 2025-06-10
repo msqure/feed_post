@@ -1,6 +1,7 @@
 import 'dart:io';
-import '../data/feed_service.dart';
-import '../model/post_model.dart';
+import '../../domain/model/post_model.dart';
+import '../api_service/feed_service.dart';
+
 
 
 class PostRepository {
@@ -15,6 +16,10 @@ class PostRepository {
       _service.editPost(postId, caption: caption, imageFile: imageFile);
 
   Future<void> deletePost(String postId) => _service.deletePost(postId);
+
+  Future<void> toggleSwitch(String postId,String userId) => _service.toggleLike(postId,userId);
+
+
 
   Stream<List<PostModel>> getPosts() => _service.getPosts();
 }

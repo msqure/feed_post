@@ -1,7 +1,9 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import '../model/post_model.dart';
+
+import '../../domain/model/post_model.dart';
+
 
 class FeedService {
   final _firestore = FirebaseFirestore.instance;
@@ -25,6 +27,32 @@ class FeedService {
     }
   }
 
+  Future<void> toggleLike(String postId, String userId) async {
+    final postRef = _firestore.collection('posts').doc(postId);
+
+    await _firestore.runTransaction((transaction) async {
+      final snapshot = await transaction.get(postRef);
+      if (!snapshot.exists) return;
+
+      final likedBy = List<String>.from(snapshot['likedBy'] ?? []);
+      final likesCount = snapshot['likesCount'] ?? 0;
+
+      if (likedBy.contains(userId)) {
+        likedBy.remove(userId);
+        transaction.update(postRef, {
+          'likedBy': likedBy,
+          'likesCount': likesCount - 1,
+        });
+      } else
+      {
+        likedBy.add(userId);
+        transaction.update(postRef, {
+          'likedBy': likedBy,
+          'likesCount': likesCount + 1,
+        });
+      }
+    });
+  }
 
 
 
@@ -33,11 +61,11 @@ class FeedService {
     try {
       final imageUrl = await uploadImage(imageFile);
 
-      await _firestore.collection('posts').add({
+      await _firestore.collection('posts')..add({
         'userId': userId,
         'caption': caption,
         'imageUrl': imageUrl,
-        'createdAt': Timestamp.now(),
+        'createdAt': DateTime.now().millisecond,
       });
     } catch (e) {
       print("Error creating post: $e");
@@ -71,19 +99,30 @@ class FeedService {
       rethrow;
     }
   }
-
   Stream<List<PostModel>> getPosts() {
     try {
       return _firestore
           .collection('posts')
           .orderBy('createdAt', descending: true)
           .snapshots()
-          .map((snap) => snap.docs
-          .map((doc) => PostModel.fromMap(doc.id, doc.data()))
-          .toList());
+          .map((QuerySnapshot<Map<String, dynamic>> snap) {
+        print('Fetched ${snap.docs.length} documents from Firestore.');
+
+        return snap.docs.map((QueryDocumentSnapshot<Map<String, dynamic>> doc) {
+          try {
+            final data = doc.data();
+            return PostModel.fromMap(doc.id, data);
+          } catch (e) {
+            ("Error parsing document with ID ${doc.id}: $e");
+            // You might want to return a default PostModel, or skip this document
+            // For now, rethrow to indicate a problem with this specific doc
+            rethrow;
+          }
+        }).toList();
+      });
     } catch (e) {
       print("Error fetching posts: $e");
-      rethrow;
+      rethrow; // Rethrow the error to be handled by the caller
     }
   }
 }

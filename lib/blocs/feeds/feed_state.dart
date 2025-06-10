@@ -1,4 +1,4 @@
-import 'package:feed_application/model/post_model.dart';
+import '../../domain/model/post_model.dart';
 
 abstract class PostState {}
 

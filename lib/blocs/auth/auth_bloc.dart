@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../data/auth_services.dart';
+import '../../data/api_service/auth_services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 part 'auth_event.dart';
 part 'auth_state.dart';

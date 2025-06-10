@@ -24,3 +24,10 @@ class DeletePost extends PostEvent {
 
   DeletePost(this.postId);
 }
+
+class ToggleLikePost extends PostEvent {
+  final String postId;
+  final String userId;
+
+  ToggleLikePost({required this.postId, required this.userId});
+}

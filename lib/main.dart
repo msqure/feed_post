@@ -5,9 +5,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'blocs/auth/auth_bloc.dart';
 import 'blocs/feeds/feed_event.dart';
-import 'data/auth_services.dart';
-import 'data/feed_service.dart';
-import 'domain/post_repo.dart';
+import 'data/api_service/auth_services.dart';
+import 'data/api_repository/post_repo.dart';
+import 'data/api_service/feed_service.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async
@@ -16,7 +16,7 @@ Future<void> main() async
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(MyApp());
 }
-/**/
+
 
 class MyApp extends StatelessWidget {
   @override

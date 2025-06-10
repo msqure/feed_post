@@ -5,7 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../blocs/feeds/feed_bloc.dart';
 import '../../blocs/feeds/feed_event.dart';
-import '../../model/post_model.dart';
+import '../../domain/model/post_model.dart';
+
 
 
 class CreateEditPostScreen extends StatefulWidget {
