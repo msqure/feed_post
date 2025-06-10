@@ -1,16 +1,27 @@
-# feed_application
+# My Flutter Auth App
 
-A new Flutter project.
+## ✨ Features
+- Email/Password Login
+- Image Upload (Firebase Storage)
+- Firestore Feed with Create, Edit, Delete
+- Bloc-based State Management
+- Clean Architecture
+- Responsive UI
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🚀 Setup
 
-A few resources to get you started if this is your first Flutter project:
+### ✅ Requirements
+- Flutter 3.x
+- Dart SDK ≥ 3.0
+- Firebase Project Setup (Android/iOS)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### ✅ Project Setup Steps
+1. Clone the project
+2. Add your Firebase config files:
+   - `google-services.json` to `android/app/`
+   - `GoogleService-Info.plist` to `ios/Runner/` (for iOS)
+3. Run:
+   ```bash
+   flutter pub get
