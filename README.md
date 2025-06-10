@@ -1,4 +1,4 @@
-# My Flutter Auth App
+# My Flutter App
 
 ## ✨ Features
 - Email/Password Login
@@ -8,6 +8,9 @@
 - Clean Architecture
 - Responsive UI
 
+## Login Crdentails 
+userID: justin@yopmail.com
+Password: Test@123
 ---
 
 ## 🚀 Setup
